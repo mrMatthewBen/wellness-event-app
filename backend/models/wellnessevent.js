@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsTo(models.Company, { foreignKey: 'company_id', as: 'company' });
       this.belongsTo(models.Event, { foreignKey: 'event_id', as: 'event' });
-      this.belongsTo(models.Location, { foreignKey: 'location_id', as: 'location' });
       this.hasMany(models.VendorEvent, { foreignKey: 'wellness_event_id', as: 'vendorEvents' });
     }
   }
@@ -34,8 +33,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ARRAY(DataTypes.DATE),
       allowNull: false
     },
-    location_id: {
-      type: DataTypes.INTEGER,
+    location: {
+      type: DataTypes.STRING,
       allowNull: false
     },
     date_created: {

@@ -1,7 +1,10 @@
 const express = require('express');
-const { createCompany } = require('../controllers/companyController');
+const { createCompany, getCompanies } = require('../controllers/companyController');
+const authenticateJWT = require('../middleware/authMiddleware');
+
 const router = express.Router();
 
-router.post('/company', createCompany);
+router.post('/company', authenticateJWT, createCompany);
+router.get('/company', authenticateJWT, getCompanies);
 
 module.exports = router;
